@@ -1,4 +1,4 @@
-import db from "../../database";
+import db from "../../database/db";
 import bcrypt from "bcrypt";
 
 const createUserService = async ({
@@ -15,17 +15,11 @@ const createUserService = async ({
 		email,
 		password: bcrypt.hashSync(password, 10),
 	});
+
+	// Create wallet for user
+	await db("wallets").insert({ user_id: id, balance: 0.0 });
+
 	return id;
 };
 
-/*
-const loginService = async ({ email, password }: { email: string; password: string }) => {
-	const [id]: any = await db("users")
-		.where({
-			email,
-		})
-		.first();
-	console.log(id);
-	return id;
-}; */
 export { createUserService };
