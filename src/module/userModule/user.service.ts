@@ -17,7 +17,7 @@ const createUserService = async ({
 	});
 
 	// Create wallet for user
-	await db("wallets").insert({ user_id: id, balance: 0.0 });
+	const wallet = await db("wallets").insert({ user_id: id, balance: 0.0 });
 
 	return id;
 };

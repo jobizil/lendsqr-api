@@ -14,6 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(deserializeUser);
 
 app.listen(port, () => {
-	console.log(`Listening on ${env} mode`);
+	console.log(`Listening in ${env} mode`);
 	routes(app);
 });
