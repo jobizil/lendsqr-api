@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "17.x",
+    "npm": "8.x"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest --watch",
-    "dev": "ts-node --transpile-only --project tsconfig.json src/app.ts",
     "start:dev": "nodemon",
     "start": "node ./dist/app.js",
     "knex": "./node_modules/.bin/knex --knexfile src/database/knexfile.ts",
