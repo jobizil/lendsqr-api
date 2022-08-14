@@ -1,1 +1,1 @@
-web: knex migration:rollback && migration:latest && yarn build && yarn start
+web:yarn knex:migrate:undo && yarn knex:migrate && yarn build && yarn start
