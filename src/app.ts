@@ -1,9 +1,9 @@
 import express from "express";
-import "dotenv/config";
+import * as dotenv from "dotenv";
 import config from "./index";
 import routes from "./routes";
 import { deserializeUser } from "./middleware/auth";
-
+dotenv.config();
 const { port, env } = config;
 
 const app = express();
