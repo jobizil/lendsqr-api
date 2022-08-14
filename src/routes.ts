@@ -6,7 +6,7 @@ import { authenticate } from "./middleware/auth";
 export default function (app: Express) {
 	// Api Status
 
-	app.get("/api/v1/status", (req: Request, res: Response) => {
+	app.get("/status", (req: Request, res: Response) => {
 		res.sendStatus(200);
 	});
 

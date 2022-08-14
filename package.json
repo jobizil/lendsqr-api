@@ -11,7 +11,7 @@
     "build": "tsc",
     "test": "jest --watch",
     "start:dev": "nodemon",
-    "start": "node ./dist/app.js",
+    "start": "node dist/app.js",
     "knex": "./node_modules/.bin/knex --knexfile src/database/knexfile.ts",
     "knex:migrate": "knex migrate:latest --knexfile src/database/knexfile.ts",
     "knex:migrate:undo": "knex migrate:rollback --knexfile src/database/knexfile.ts"
