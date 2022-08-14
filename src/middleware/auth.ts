@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import config from "../index";
 
-const { jwtSecret } = config;
+const jwtSecret = <string>process.env.JWT_SECRET;
 
 export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
 	return jwt.sign(object, jwtSecret, { ...(options && options), algorithm: "HS256" });
