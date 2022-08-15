@@ -51,3 +51,7 @@ You can check the Node.js and npm versions by running the following commands.
 ## Postman documentation
 
 https://documenter.getpostman.com/view/12204297/VUjSGj2o
+
+#### Deployed Link
+
+You can [click here](https://lendsqr-wallet-api.herokuapp.com) to test the api
