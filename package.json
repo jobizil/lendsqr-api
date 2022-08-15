@@ -8,14 +8,10 @@
     "npm": "8.x"
   },
   "scripts": {
-    "build": "tsc",
+    "postinstall": "tsc",
     "test": "jest --watch",
-    "start:dev": "nodemon",
-    "start": "node dist/server.js",
-    "start:pm2": "pm2-runtime start ecosystem.config.js --env development",
-    "knex": "./node_modules/.bin/knex --knexfile src/database/knexfile.ts",
-    "knex:migrate": "knex migrate:latest --knexfile src/database/knexfile.ts",
-    "knex:migrate:undo": "knex migrate:rollback --knexfile src/database/knexfile.ts"
+    "dev:start": "nodemon",
+    "start": "pm2-runtime start ecosystem.config.js --env development"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
