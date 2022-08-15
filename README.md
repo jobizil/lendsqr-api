@@ -8,9 +8,10 @@ It is a simple API that allows users to carry out basic wallet transactions.
 ### Instruction
 
 Given a requirement to build a system where
-∙ A user can create an account
-∙ A user can fund their account
-∙ A user can transfer funds to another user’s account ∙ A user can withdraw funds from their account.
+- A user can create an account
+- A user can fund their account
+- A user can transfer funds to another user’s account 
+- A user can withdraw funds from their account.
 
 ## Getting Started
 
@@ -37,7 +38,11 @@ You can check the Node.js and npm versions by running the following commands.
 
 - Run the migrations to create database tables by running `yarn knex:migrate`
 
-- Access endpoints on your set port or `127.0.0.1:3002`
+- To compile kindly use `yarn postinstall`
+
+- Start the server with `yarn start`
+
+- Access endpoints on your desired localhost set port 
 
 | Method | Description   | Endpoints               | Role |
 | :----- | :------------ | :---------------------- | :--- |
