@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import * as WalletServices from "../module/walletModule/wallet.service";
-import createServer from "../server";
+import createServer from "../app";
 
 const app = createServer();
 const walletPayload = {

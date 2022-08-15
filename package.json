@@ -1,5 +1,5 @@
 {
-  "name": "lendsqr",
+  "name": "lendsqr-api",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -11,7 +11,8 @@
     "build": "tsc",
     "test": "jest --watch",
     "start:dev": "nodemon",
-    "start": "node dist/app.js",
+    "start": "node dist/server.js",
+    "start:pm2": "pm2-runtime start ecosystem.config.js --env development",
     "knex": "./node_modules/.bin/knex --knexfile src/database/knexfile.ts",
     "knex:migrate": "knex migrate:latest --knexfile src/database/knexfile.ts",
     "knex:migrate:undo": "knex migrate:rollback --knexfile src/database/knexfile.ts"
@@ -24,7 +25,8 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.2.0",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "pm2": "^5.2.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import * as UserServices from "../module/userModule/user.service";
-import createServer from "../server";
+import createServer from "../app";
 
 const app = createServer();
 const userPayload = {

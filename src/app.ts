@@ -1,9 +1,17 @@
-import config from "./index";
-import createServer from "./server";
+import express from "express";
+import * as dotenv from "dotenv";
+import routes from "./routes";
+import { deserializeUser } from "./middleware/auth";
+dotenv.config();
 
-const { port, env } = config;
-const app = createServer();
+function createServer() {
+	const app = express();
+	app.use(express.json());
+	app.use(express.urlencoded({ extended: false }));
 
-app.listen(port, () => {
-	console.log(`Listening in ${env} mode`);
-});
+	app.use(deserializeUser);
+	routes(app);
+	return app;
+}
+
+export default createServer;
