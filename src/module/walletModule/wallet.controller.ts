@@ -67,7 +67,7 @@ const transferFund = async (req: Request, res: Response) => {
 
 	let { amount } = amountValidation.value;
 	amount = parseFloat(amount.toFixed(2));
-	console.log(res.locals.user.id);
+
 	const transfer = await transferFundService(amount, res.locals.user.id, receiverId);
 	return res.status(200).json({
 		data: transfer,

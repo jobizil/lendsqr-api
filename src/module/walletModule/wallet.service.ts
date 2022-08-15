@@ -97,7 +97,6 @@ const transferFundService = async (amount: number, senderId: number, receiverId:
 			await trx.rollback();
 			return { message: "Wallet not found." };
 		}
-		console.log(receiverWallet);
 
 		if (amount > senderWallet.balance) {
 			return { message: "Cannot process transfer due to insufficient funds." };

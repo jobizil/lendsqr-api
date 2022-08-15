@@ -22,4 +22,21 @@ const createUserService = async ({
 	return id;
 };
 
-export { createUserService };
+const loginUserService = async ({ email, password }: { email: string; password: string }) => {
+	const retrievedUser = await db("users").where({ email }).first();
+	if (!retrievedUser) {
+		return { message: "Invalid Credentials!" };
+	}
+	const validPassword = await bcrypt.compare(password, retrievedUser.password);
+	if (!validPassword) {
+		return { message: "Invalid Credentials!" };
+	}
+	return retrievedUser;
+};
+
+const getUserService = async (id: number) => {
+	const user = await db("users").where({ id }).first();
+	return user;
+};
+
+export { createUserService, loginUserService, getUserService };

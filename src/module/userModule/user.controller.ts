@@ -1,13 +1,17 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import { createUserService } from "./user.service";
+import { createUserService, loginUserService, getUserService } from "./user.service";
 import db from "../../database/db";
 import { signJwt } from "../../middleware/auth";
 
 const signUp = async (req: Request, res: Response) => {
 	try {
-		const { username, email } = req.body;
-		const id = await createUserService(req.body);
+		const { username, email, password } = req.body;
+
+		if (!email || !username || !password) {
+			return res.status(400).json({ message: "All fields are required." });
+		}
+		const id = await createUserService({ username, email, password });
 		return res.status(201).json({
 			status: 200,
 			message: "User created successfully",
@@ -24,15 +28,9 @@ const login = async (req: Request, res: Response) => {
 		if (!email || !password) {
 			return res.status(400).json({ message: "Both email and password are required." });
 		}
-		const retrievedUser = await db("users").where({ email }).first();
-		if (!retrievedUser) {
-			return res.status(200).json({ message: "Invalid Credentials!" });
-		}
-		const validPassword = await bcrypt.compare(password, retrievedUser.password);
-		if (!validPassword) {
-			return res.status(200).json({ message: "Invalid Credentials!" });
-		}
-		const payload = { id: retrievedUser.id, email: retrievedUser.email };
+		const user = await loginUserService(req.body);
+
+		const payload = { id: user.id, email: user.email };
 
 		const accessToken = signJwt(payload, { expiresIn: "1h" });
 
@@ -49,7 +47,8 @@ const login = async (req: Request, res: Response) => {
 const myProfile = async (req: Request, res: Response) => {
 	const userId = res.locals.user.id;
 	try {
-		const user = await db("users").where({ id: userId }).first();
+		const user = await getUserService(userId);
+
 		user.password = undefined;
 		return res.status(200).json({
 			status: 200,
