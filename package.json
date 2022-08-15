@@ -11,7 +11,7 @@
     "postinstall": "tsc",
     "test": "jest --watch",
     "dev:start": "nodemon",
-    "start": "pm2-runtime start ecosystem.config.js --env development"
+    "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
