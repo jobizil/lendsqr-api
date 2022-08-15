@@ -21,7 +21,14 @@ const knexConfig: IKnexConfig = {
 			password: db_password,
 			database: db_name,
 		},
-		// connection: { port: 3306, host: "127.0.0.1", user: "root", password: "helloWorld", database: "lendsqr_test" },
+
+		migrations: {
+			tableName: "knex_migrations",
+		},
+	},
+	production: {
+		client: "mysql2",
+		connection: config.db_url,
 		migrations: {
 			tableName: "knex_migrations",
 		},
